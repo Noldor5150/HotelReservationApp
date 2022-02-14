@@ -16,7 +16,7 @@ namespace HotelReservationApp.Models
             _reservations = new List<Reservation>();
         }
 
-        public IEnumerable<Reservation> GetReservationsForUser()
+        public IEnumerable<Reservation> GetAllReservations()
         {
             return _reservations;
         }

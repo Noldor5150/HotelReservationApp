@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using System.Windows.Input;
 using HotelReservationApp.Commands;
 using HotelReservationApp.Models;
+using HotelReservationApp.Services;
 using HotelReservationApp.Stores;
 
 namespace HotelReservationApp.ViewModels
@@ -85,12 +86,12 @@ namespace HotelReservationApp.ViewModels
 
         public ICommand SubmitCommand { get; }
         public ICommand CancelCommand { get; }
-      
+       
 
-        public MakeReservationViewModel(Hotel hotel, NavigationStore navigationStore, Func<ReservationListingViewModel> createReservationViewModel)
+        public MakeReservationViewModel(Hotel hotel, NavigationService reservationViewNavigationService)
         {
-            SubmitCommand = new MakeReservationCommand(this, hotel);
-            CancelCommand = new NavigateCommand(navigationStore, createReservationViewModel);
+            SubmitCommand = new MakeReservationCommand(this, hotel,reservationViewNavigationService);
+            CancelCommand = new NavigateCommand(reservationViewNavigationService);
            
         }
     }
